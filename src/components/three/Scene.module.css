@@ -1,0 +1,12 @@
+.canvasHost {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-hero-canvas);
+  pointer-events: none;
+}
+
+.canvasHost canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

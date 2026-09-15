@@ -1,0 +1,116 @@
+.button {
+  position: fixed;
+  right: max(1.15rem, env(safe-area-inset-right));
+  bottom: max(1.15rem, env(safe-area-inset-bottom));
+  z-index: var(--z-back-top);
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--color-accent);
+  background: var(--color-bg);
+  background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+  border: 1px solid var(--color-border-strong);
+  box-shadow:
+    0 10px 28px color-mix(in srgb, var(--color-bg) 42%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--color-text) 8%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(0.7rem) scale(0.92);
+  transition:
+    opacity 0.35s var(--ease-premium),
+    visibility 0.35s var(--ease-premium),
+    transform 0.35s var(--ease-premium),
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.button[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.button:hover,
+.button:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+}
+
+.button:hover .core svg,
+.button:focus-visible .core svg {
+  transform: translateY(-2px);
+}
+
+.button[data-visible="true"]:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.ring {
+  position: absolute;
+  inset: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  transform: rotate(-90deg);
+}
+
+.track,
+.meter {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.track {
+  stroke: var(--color-border-strong);
+}
+
+.meter {
+  stroke: var(--color-accent);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.16s linear;
+}
+
+.core {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.core svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  stroke: var(--color-text);
+  stroke-width: 1.6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.35s var(--ease-premium);
+}
+
+@media (max-width: 640px) {
+  .button {
+    width: 2.55rem;
+    height: 2.55rem;
+    right: max(0.9rem, env(safe-area-inset-right));
+    bottom: max(0.9rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .meter,
+  .core svg {
+    transition-duration: 0.01ms;
+  }
+}

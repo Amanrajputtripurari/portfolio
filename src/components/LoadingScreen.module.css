@@ -1,0 +1,84 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.7s var(--ease-premium),
+    visibility 0s linear 0s;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.7s var(--ease-premium),
+    visibility 0s linear 0.7s;
+}
+
+.content {
+  width: min(280px, 70vw);
+  text-align: center;
+}
+
+.orbit {
+  position: relative;
+  width: 3.1rem;
+  height: 3.1rem;
+  margin: 0 auto 1.1rem;
+}
+
+.orbit span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.35;
+  animation: boot-spin 2.2s linear infinite;
+}
+
+.orbit span:last-child {
+  inset: 0.45rem;
+  opacity: 0.8;
+  animation-duration: 1.35s;
+  animation-direction: reverse;
+}
+
+.label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-4);
+}
+
+.track {
+  height: 1px;
+  width: 100%;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease-out;
+}
+
+@keyframes boot-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit span {
+    animation: none;
+  }
+}

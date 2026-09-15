@@ -1,0 +1,41 @@
+.scrollContainer {
+  position: relative;
+  height: 280vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 55% 52% at 50% 78%, var(--color-bg-elevated) 0%, transparent 72%),
+    var(--color-bg);
+}
+
+@media (max-width: 860px) {
+  .sticky {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 0.75rem);
+    background:
+      radial-gradient(ellipse 55% 48% at 50% 48%, var(--color-bg-elevated) 0%, transparent 72%),
+      var(--color-bg);
+  }
+}
+
+@media (max-width: 760px) {
+  .scrollContainer {
+    height: 240vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .sticky {
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 1rem);
+  }
+}

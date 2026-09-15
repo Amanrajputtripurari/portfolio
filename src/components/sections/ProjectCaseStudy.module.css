@@ -1,0 +1,123 @@
+.dialog {
+  display: none;
+  width: min(36rem, calc(100vw - 2rem));
+  max-height: min(88vh, 40rem);
+  max-height: min(88svh, 40rem);
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.dialog[open] {
+  display: block;
+}
+
+.dialog::backdrop {
+  background: rgba(8, 9, 12, 0.72);
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.panel {
+  position: relative;
+  overflow: auto;
+  padding: 1.35rem 1.35rem 1.6rem;
+  border-radius: 1.15rem;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--color-bg) 55%, transparent);
+}
+
+.close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 1;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-dim);
+  min-height: 2.25rem;
+  padding: 0 0.7rem;
+}
+
+.preview {
+  aspect-ratio: 16 / 10;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  margin-bottom: 1.15rem;
+  border: 1px solid var(--color-border);
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  margin-bottom: 0.45rem;
+}
+
+.panel h3 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.role {
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+  margin-bottom: 1.15rem;
+}
+
+.facts {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.facts dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--color-text-faint);
+  margin-bottom: 0.3rem;
+}
+
+.facts dd {
+  margin: 0;
+  color: var(--color-text-dim);
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.tech li {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-dim);
+}
+
+.actions {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.actions a {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+}

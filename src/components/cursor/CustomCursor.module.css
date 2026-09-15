@@ -1,0 +1,95 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.root[data-visible="true"] {
+  opacity: 1;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+}
+
+.glow {
+  width: 6.5rem;
+  height: 6.5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cursor-glow) 0%, transparent 72%);
+  mix-blend-mode: plus-lighter;
+  opacity: 0.7;
+}
+
+.ring {
+  width: 1.85rem;
+  height: 1.85rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.25px solid var(--cursor-ring);
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--cursor-ring) 32%, transparent),
+    inset 0 0 8px color-mix(in srgb, var(--cursor-ring) 14%, transparent);
+}
+
+.core {
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 32% 28%,
+    color-mix(in srgb, var(--cursor-core) 55%, #fff) 0%,
+    var(--cursor-core) 55%,
+    color-mix(in srgb, var(--cursor-core) 70%, #000) 100%
+  );
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--cursor-ring) 70%, transparent),
+    inset 0 1px 1px rgba(255, 255, 255, 0.55);
+}
+
+.trail {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cursor-trail);
+  transform: translate(-50%, -50%);
+  filter: blur(0.4px);
+}
+
+.ripple {
+  width: 1.85rem;
+  height: 1.85rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--cursor-ring);
+  opacity: 1;
+}
+
+.root[data-state="hover"] .ring {
+  background: color-mix(in srgb, var(--cursor-ring) 16%, transparent);
+}
+
+:global([data-theme="light"]) .glow {
+  mix-blend-mode: multiply;
+}
+
+:global([data-theme="light"]) .core {
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--cursor-ring) 45%, transparent),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+@media (pointer: coarse) {
+  .root {
+    display: none;
+  }
+}
