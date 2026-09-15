@@ -1,6 +1,6 @@
 import { useEffect, type RefObject } from "react";
-import { ScrollTrigger } from "../utils/gsapSetup";
-import { setHeroProgress } from "../utils/heroProgress";
+import { ScrollTrigger } from "@/lib/gsap";
+import { setHeroProgress } from "@/lib/heroProgress";
 
 /**
  * Drives the single master `heroProgress` value from the hero scroll

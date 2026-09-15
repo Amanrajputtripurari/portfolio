@@ -1,32 +1,39 @@
-# React + TypeScript + Vite
+# Aman Rajput — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Cinematic personal site built with React 19, TypeScript, Vite, GSAP, and Three.js.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm run dev      # local server
+npm run build    # typecheck + production bundle
+npm run lint     # oxlint
+npm run preview  # serve the production build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Imports use the `@/` alias (maps to `src/`). Example: `@/features/hero/CinematicHero`.
+
+## Source layout
+
+```
+src/
+  main.tsx                 # app bootstrap
+  app/App.tsx              # page composition
+  providers/               # React context (theme)
+  components/              # shared UI, not page-specific
+    layout/                # Navigation, BackToTop
+    ui/                    # loaders, section heading
+    cursor/                # custom cursor
+    theme/                 # theme toggle
+  features/                # one folder per page section
+    hero/ about/ skills/ experience/ projects/ services/ contact/
+  lib/                     # framework-agnostic helpers
+    three/                 # WebGL scenes and graph
+  hooks/                   # shared React hooks
+  data/                    # copy and content
+  types/                   # shared TypeScript types
+  styles/                  # tokens + global CSS
+public/                    # static assets (favicon, portrait)
+```
+
+Same-folder CSS modules stay relative (`./Foo.module.css`). Everything else is imported with `@/`.

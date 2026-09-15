@@ -1,67 +1,17 @@
 /**
- * All portfolio content lives here. Everything below is placeholder —
- * replace it with your real name, bio, skills, experience, and projects
- * before shipping. Nothing in the UI invents content beyond what's here.
+ * All portfolio content lives here. Replace placeholders with real copy
+ * before shipping. UI components should not invent content beyond this file.
  */
+import type { ExperienceItem, PersonalInfo, Project, Service, SkillItem, SocialLink } from "@/types/portfolio";
 
-export interface PersonalInfo {
-  name: string;
-  role: string;
-  eyebrow: string;
-  headline: string[];
-  summary: string;
-  location: string;
-  email: string;
-  available?: boolean;
-  resumeUrl?: string;
-}
-
-export interface SkillItem {
-  name: string;
-  category: string;
-  mark: string;
-  color: string;
-  ink?: string;
-  summary: string;
-  rating: number;
-}
-
-export interface ExperienceItem {
-  id: string;
-  company: string;
-  role: string;
-  period: string;
-  summary: string;
-  highlights: string[];
-}
-
-export interface Project {
-  id: string;
-  number: string;
-  name: string;
-  description: string;
-  technologies: string[];
-  role: string;
-  year: string;
-  accent: string;
-  mock: "console" | "realtime" | "spatial";
-  problem: string;
-  outcome: string;
-  image?: string;
-  liveUrl?: string;
-  sourceUrl?: string;
-}
-
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-}
-
-export interface SocialLink {
-  label: string;
-  url: string;
-}
+export type {
+  ExperienceItem,
+  PersonalInfo,
+  Project,
+  Service,
+  SkillItem,
+  SocialLink,
+} from "@/types/portfolio";
 
 export const personal: PersonalInfo = {
   name: "Aman Rajput",

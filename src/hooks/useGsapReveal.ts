@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, type RefObject } from "react";
-import { gsap, ScrollTrigger } from "../utils/gsapSetup";
-import { useReducedMotion } from "./useReducedMotion";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const TOGGLE_ACTIONS = "play none none reverse" as const;
 

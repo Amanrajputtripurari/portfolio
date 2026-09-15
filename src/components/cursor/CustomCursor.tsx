@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import { lerp } from "../../utils/animation";
-import { useReducedMotion } from "../../hooks/useReducedMotion";
-import { onMediaQueryChange } from "../../utils/mediaQuery";
+import { lerp } from "@/lib/animation";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { onMediaQueryChange } from "@/lib/mediaQuery";
 import styles from "./CustomCursor.module.css";
 
 const INTERACTIVE = "a, button, [role='button'], label, summary, [data-cursor='hover']";

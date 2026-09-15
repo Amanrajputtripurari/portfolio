@@ -1,4 +1,4 @@
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "@/providers/ThemeProvider";
 import styles from "./ThemeToggle.module.css";
 
 export default function ThemeToggle() {

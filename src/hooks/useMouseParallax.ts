@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { lerp } from "../utils/animation";
-import { useReducedMotion } from "./useReducedMotion";
+import { lerp } from "@/lib/animation";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export interface ParallaxVector {
   x: number;
