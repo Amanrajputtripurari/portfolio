@@ -181,6 +181,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
+  image-rendering: auto;
 }
 
 .infoHead {
@@ -209,7 +211,7 @@
 .description {
   color: var(--color-text-dim);
   line-height: 1.6;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .tech {
@@ -238,7 +240,9 @@
 
 .links {
   display: flex;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .links a,

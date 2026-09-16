@@ -21,7 +21,15 @@ export default function Experience() {
               <h3>{item.role}</h3>
               <span className={styles.period}>{item.period}</span>
             </div>
-            <p className={styles.company}>{item.company}</p>
+            <p className={styles.company}>
+              {item.url ? (
+                <a href={item.url} target="_blank" rel="noreferrer" data-cursor="hover">
+                  {item.company}
+                </a>
+              ) : (
+                item.company
+              )}
+            </p>
             <p className={styles.summary}>{item.summary}</p>
             <ul className={styles.highlights}>
               {item.highlights.map((highlight) => (

@@ -19,9 +19,9 @@ export const personal: PersonalInfo = {
   eyebrow: "Full-Stack Developer",
   headline: ["Building digital", "experiences that move."],
   summary:
-    "I design and build scalable, performant and thoughtful digital products.",
+    "I design and build scalable, performant products — FastWhistle at 5Inch Ventures, and freelance work with Zaploom Technology.",
   location: "Based remotely",
-  email: "hello@example.com",
+  email: "amanrajputtripurari@gmail.com",
   available: true,
   resumeUrl: undefined,
 };
@@ -42,8 +42,8 @@ export const heroChapters = {
 
 export const about = {
   paragraphs: [
-    "I'm a software engineer who works across the stack, turning ambitious product ideas into fast, reliable systems. My focus is the gap between engineering rigor and product feel — the parts of an experience users notice without knowing why.",
-    "I care about clean architecture, measured performance, and interfaces that respect people's time. Most of what I ship sits at the intersection of frontend craft and backend systems design.",
+    "I'm a software engineer with six years at 5Inch Ventures Pvt Ltd, where I built FastWhistle — a pharma last-mile and fleet platform used by distributors, retailers, riders, and field teams.",
+    "Alongside that I freelance with Zaploom Technology: design plus frontend and backend. There I shipped Yaaro Fit, a social fitness app, and contributed across Zaploom’s client products.",
   ],
   stats: [
     { label: "Years experience", value: "6+" },
@@ -74,71 +74,115 @@ export const skills: SkillItem[] = [
 export const experience: ExperienceItem[] = [
   {
     id: "exp-1",
-    company: "Company Name",
-    role: "Senior Software Engineer",
-    period: "2023 — Present",
-    summary: "Leading full-stack development for a core product surface.",
+    company: "5Inch Ventures Pvt Ltd",
+    url: "https://fastwhistle.com",
+    role: "Software Engineer",
+    period: "2020 — Present",
+    summary:
+      "Six years building FastWhistle, a pharma logistics and fleet platform for distributors across India.",
     highlights: [
-      "Rebuilt the primary web client, cutting median load time significantly",
-      "Designed the service layer connecting three downstream teams",
-      "Mentored engineers through architecture and code review",
+      "Built FastWhistle end-to-end: last-mile medicine delivery plus Fleet SaaS for field teams",
+      "Same-day delivery operations in Ahmedabad, Surat, Pune, and Mumbai, with live rider tracking",
+      "Shipped distributor, retailer, rider, and fleet apps — orders, tasks, attendance, collections, and proof of delivery",
     ],
   },
   {
     id: "exp-2",
-    company: "Previous Company",
-    role: "Software Engineer",
-    period: "2020 — 2023",
-    summary: "Owned features end-to-end across web and backend services.",
+    company: "Zaploom Technology",
+    url: "https://zaploom.in",
+    role: "Freelance Full-Stack Engineer",
+    period: "2023 — Present",
+    summary:
+      "Design, frontend, and backend for Zaploom products — including Yaaro Fit and client platforms.",
     highlights: [
-      "Shipped a real-time collaboration feature used by thousands of teams",
-      "Introduced automated testing that reduced regressions in production",
+      "Designed and built Yaaro Fit: GPS activity tracking, social feed, clubs, challenges, and rewards",
+      "Contributed frontend and backend across Zaploom client work — web, mobile, and APIs",
+      "Helped take products from concept through launch with Zaploom’s studio team",
     ],
   },
 ];
 
 export const projects: Project[] = [
   {
-    id: "proj-1",
+    id: "fastwhistle",
     number: "01",
-    name: "Project One",
+    name: "FastWhistle",
     description:
-      "A short, concrete description of the problem this project solved and the outcome it produced.",
-    technologies: ["React", "TypeScript", "Node.js"],
-    role: "Lead Engineer",
-    year: "2025",
-    accent: "#8fb2ff",
-    mock: "console",
-    problem: "The product surface had grown faster than the architecture. Load time and ownership were both slipping.",
-    outcome: "Rebuilt the client around a typed service layer. Median load dropped, and three teams could ship without colliding.",
-  },
-  {
-    id: "proj-2",
-    number: "02",
-    name: "Project Two",
-    description:
-      "A short, concrete description of the problem this project solved and the outcome it produced.",
-    technologies: ["Next.js", "PostgreSQL", "AWS"],
-    role: "Full-Stack Developer",
-    year: "2024",
-    accent: "#7ee0c3",
+      "Pharma distribution, two ways: FastWhistle riders for same-day logistics in Ahmedabad, Surat, Pune, and Mumbai — or Fleet SaaS to run your own field team anywhere in India.",
+    role: "Full-Stack Engineer · 5Inch Ventures",
+    year: "2020",
+    accent: "#2563eb",
     mock: "realtime",
-    problem: "Live updates were bolted on after the fact, so the UI drifted from the source of truth.",
-    outcome: "Designed a single event path from Postgres to the client. State stayed honest under concurrent edits.",
+    problem:
+      "Pharma distributors had to choose between hiring a courier and running their own riders and salesmen. Delivery, attendance, collections, and proof of delivery lived in different tools, so last-mile was slow and hard to see.",
+    approach:
+      "FastWhistle is one product with two operating models. Logistics uses FastWhistle riders in four cities with a 4-hour SLA and dedicated ops. Fleet SaaS lets a distributor run their own team pan-India — tasks, GPS, attendance, and collections — at ₹499 per user per month.",
+    features: [
+      "Logistics: FastWhistle riders, 4-hour delivery, Ahmedabad / Surat / Pune / Mumbai, ops included",
+      "Fleet SaaS: your riders and salesmen, you set the SLA, all-India coverage, in-app support",
+      "Live GPS, task assignment, attendance, collections, and proof of delivery on one platform",
+    ],
+    outcome:
+      "Distributors pick how to run pharma distribution without stitching vendors together. Same-day logistics in four metros, or software for a nationwide field force — both ship from FastWhistle.",
+    image: "/images/projects/fastwhistle.jpg",
+    imageFull: "/images/projects/fastwhistle-full.jpg",
+    imageAlt: "FastWhistle landing page: Pharma Distribution, Two Ways to Run It — Logistics versus Fleet SaaS",
+    liveUrl: "https://fastwhistle.com",
   },
   {
-    id: "proj-3",
-    number: "03",
-    name: "Project Three",
+    id: "yaaro-fit",
+    number: "02",
+    name: "Yaaro Fit",
     description:
-      "A short, concrete description of the problem this project solved and the outcome it produced.",
-    technologies: ["React", "Three.js", "WebSockets"],
-    role: "Frontend Engineer",
-    year: "2024",
-    accent: "#e2a37a",
+      "Track. Share. Earn. Repeat. A social fitness app from Zaploom — GPS runs, walks, and rides, gym logging, a kudos feed, clubs, challenges, and points you can redeem for real rewards.",
+    role: "Design, Frontend & Backend · Zaploom Technology",
+    year: "2026",
+    accent: "#d0ea59",
     mock: "spatial",
-    problem: "The story of the product lived in slides. The product itself could not show it.",
-    outcome: "A spatial interface that carries the narrative in the object, not in a deck beside it.",
+    problem:
+      "Most fitness apps stop at a private log. Without friends, clubs, or a reason to come back tomorrow, streaks die and the tracker becomes a graveyard of half-finished weeks.",
+    approach:
+      "Yaaro is built as a loop, not a spreadsheet: Track. Share. Earn. Repeat. I designed and contributed frontend and backend so activity, social, and rewards sit in one product — live on iOS, Android, and yaaro.fit.",
+    features: [
+      "Record: GPS running, walking, and cycling plus gym sets/reps/weight, dance, and yoga",
+      "Share: activity feed with photos, milestones, and kudos from friends",
+      "Earn: points, streaks, and challenges redeemable for fitness gear and vouchers",
+      "Repeat: clubs, weekly and monthly leaderboards, and habit loops to stay consistent",
+    ],
+    outcome:
+      "Yaaro Fit launched on the App Store and Google Play. The marketing site at yaaro.fit carries the same story: track the work, share it with people, earn something real, then do it again.",
+    image: "/images/projects/yaaro-fit.jpg",
+    imageFull: "/images/projects/yaaro-fit-full.jpg",
+    imageAlt: "Yaaro Fit — Track. Share. Earn. Repeat. Social fitness app for runs, workouts, clubs, and rewards",
+    liveUrl: "https://yaaro.fit",
+  },
+  {
+    id: "bingo",
+    number: "03",
+    name: "BINGO",
+    description:
+      "Real-time multiplayer Bingo: create or join a room, share a 6-character code or invite link, play turns on a 15-second timer, and keep going until everyone is ranked.",
+    technologies: ["React", "TypeScript", "Socket.IO", "Node.js", "Express", "Vite"],
+    role: "Full-Stack · Personal project",
+    year: "2026",
+    accent: "#f97316",
+    mock: "realtime",
+    problem:
+      "Casual multiplayer games usually break when someone refreshes, when two people pick the same number, or when the host’s laptop is the only source of truth. Bingo needs one shared board, one clock, and a fair ranking if more than two people play.",
+    approach:
+      "A React client and an Express + Socket.IO server with in-memory room state. The server owns the board, the turn, and the timer. Clients only send intent — create room, join, start, pick a number — and receive the same events everyone else does.",
+    features: [
+      "Rooms via 6-character code or invite link; host starts when at least two players have joined",
+      "Global number pool: each number can be picked once, with a 15-second turn timer",
+      "Automatic line detection and B-I-N-G-O progress; tournament mode ranks every player before the game ends",
+      "Reconnection with a 60-second grace period so a refresh does not dump you from the room",
+      "Responsive UI for desktop, tablet, and mobile",
+    ],
+    outcome:
+      "A public, MIT-licensed full-stack game you can clone and run. Frontend and backend share one production process (Vite + Express + Socket.IO) with PM2 notes for a single in-memory instance.",
+    image: "/images/projects/bingo.jpg",
+    imageAlt: "BINGO on GitHub — real-time multiplayer Bingo with React and Socket.IO",
+    sourceUrl: "https://github.com/Amanrajputtripurari/BINGO",
   },
 ];
 
@@ -161,7 +205,6 @@ export const services: Service[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: "GitHub", url: "https://github.com" },
-  { label: "LinkedIn", url: "https://linkedin.com" },
-  { label: "Twitter", url: "https://twitter.com" },
+  { label: "GitHub", url: "https://github.com/Amanrajputtripurari" },
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/aman-rajput-tripurari/" },
 ];

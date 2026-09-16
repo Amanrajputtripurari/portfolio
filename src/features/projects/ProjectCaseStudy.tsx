@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { Project } from "@/types/portfolio";
 import ProjectMock from "@/features/projects/ProjectMock";
+import ProjectLiveLink from "@/features/projects/ProjectLiveLink";
 import styles from "./ProjectCaseStudy.module.css";
 
 interface ProjectCaseStudyProps {
@@ -36,19 +37,23 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
       }}
     >
       {project && (
-        <div className={styles.panel}>
+        <article className={styles.panel}>
           <button type="button" className={styles.close} onClick={onClose} aria-label="Close case study">
             Close
           </button>
-          <div className={styles.preview}>
-            {project.image ? (
-              <img src={project.image} alt="" />
+          <div className={`${styles.preview} ${project.imageFull ? styles.previewShot : ""}`}>
+            {project.imageFull || project.image ? (
+              <img
+                src={project.imageFull ?? project.image}
+                alt={project.imageAlt ?? `${project.name} preview`}
+                decoding="async"
+              />
             ) : (
               <ProjectMock project={project} />
             )}
           </div>
           <p className={styles.kicker}>
-            {project.number} — {project.year}
+            Case study {project.number} — {project.year}
           </p>
           <h3>{project.name}</h3>
           <p className={styles.role}>{project.role}</p>
@@ -57,29 +62,41 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
               <dt>Problem</dt>
               <dd>{project.problem}</dd>
             </div>
+            {project.approach && (
+              <div>
+                <dt>Approach</dt>
+                <dd>{project.approach}</dd>
+              </div>
+            )}
+            {project.features && project.features.length > 0 && (
+              <div>
+                <dt>What shipped</dt>
+                <dd>
+                  <ul className={styles.featureList}>
+                    {project.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )}
             <div>
               <dt>Outcome</dt>
               <dd>{project.outcome}</dd>
             </div>
           </dl>
-          <ul className={styles.tech}>
-            {project.technologies.map((tech) => (
-              <li key={tech}>{tech}</li>
-            ))}
-          </ul>
+          {project.technologies && project.technologies.length > 0 && (
+            <ul className={styles.tech}>
+              {project.technologies.map((tech) => (
+                <li key={tech}>{tech}</li>
+              ))}
+            </ul>
+          )}
           <div className={styles.actions}>
-            {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                Live site
-              </a>
-            )}
-            {project.sourceUrl && (
-              <a href={project.sourceUrl} target="_blank" rel="noreferrer">
-                Source
-              </a>
-            )}
+            {project.liveUrl && <ProjectLiveLink href={project.liveUrl} />}
+            {project.sourceUrl && <ProjectLiveLink href={project.sourceUrl} label="GitHub" />}
           </div>
-        </div>
+        </article>
       )}
     </dialog>
   );

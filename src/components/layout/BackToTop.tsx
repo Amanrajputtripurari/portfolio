@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { scrollToSection } from "@/lib/scrollToSection";
 import styles from './BackToTop.module.css';
 
 const RING_RADIUS = 18;
@@ -8,7 +8,6 @@ const RING_LENGTH = 2 * Math.PI * RING_RADIUS;
 export default function BackToTop() {
     const [visible, setVisible] = useState(false);
     const [progress, setProgress] = useState(0);
-    const reducedMotion = useReducedMotion();
 
     useEffect(() => {
         const hero = document.getElementById('hero');
@@ -39,12 +38,7 @@ export default function BackToTop() {
     }, []);
 
     function handleClick() {
-        const hero = document.getElementById('hero');
-        if (hero) {
-            hero.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-            return;
-        }
-        window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+        scrollToSection("hero");
     }
 
     return (

@@ -41,8 +41,12 @@ export default function CinematicHero({ onReady }: CinematicHeroProps) {
         <Suspense fallback={null}>
           <Scene key={theme} onReady={() => setSceneReady(true)} />
         </Suspense>
-        <HeroPortrait onReady={() => setPortraitReady(true)} />
-        <HeroText />
+        <div className={styles.copy}>
+          <HeroText />
+        </div>
+        <div className={styles.portrait} data-hero-portrait>
+          <HeroPortrait onReady={() => setPortraitReady(true)} />
+        </div>
       </div>
     </section>
   );

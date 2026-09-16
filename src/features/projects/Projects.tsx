@@ -16,7 +16,7 @@ export default function Projects() {
       <SectionHeading
         id="projects"
         title="Selected Work"
-        description="A handful of projects that show how I think, not just what I shipped."
+        description="FastWhistle, Yaaro Fit, and BINGO."
       />
       <div className={styles.list}>
         {projects.map((project, index) => (

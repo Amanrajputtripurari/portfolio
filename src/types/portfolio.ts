@@ -27,6 +27,7 @@ export interface ExperienceItem {
   period: string;
   summary: string;
   highlights: string[];
+  url?: string;
 }
 
 export interface Project {
@@ -34,14 +35,18 @@ export interface Project {
   number: string;
   name: string;
   description: string;
-  technologies: string[];
+  technologies?: string[];
   role: string;
   year: string;
   accent: string;
   mock: "console" | "realtime" | "spatial";
   problem: string;
   outcome: string;
+  approach?: string;
+  features?: string[];
   image?: string;
+  imageFull?: string;
+  imageAlt?: string;
   liveUrl?: string;
   sourceUrl?: string;
 }

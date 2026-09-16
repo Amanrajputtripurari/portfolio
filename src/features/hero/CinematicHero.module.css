@@ -9,22 +9,59 @@
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(18rem, 1fr) minmax(16rem, 1.05fr);
+  align-items: stretch;
+  column-gap: clamp(1rem, 3vw, 3.5rem);
+  padding-inline: var(--gutter);
+  background:
+    radial-gradient(ellipse 48% 50% at 72% 82%, var(--color-bg-elevated) 0%, transparent 72%),
+    var(--color-bg);
+}
+
+.copy {
+  position: relative;
+  z-index: var(--z-hero-ui);
+  min-width: 0;
+  align-self: stretch;
+}
+
+.portrait {
+  position: relative;
+  z-index: var(--z-hero-video);
+  min-width: 0;
+  min-height: 0;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  background:
-    radial-gradient(ellipse 55% 52% at 50% 78%, var(--color-bg-elevated) 0%, transparent 72%),
-    var(--color-bg);
+  justify-content: flex-end;
+  pointer-events: none;
 }
 
 @media (max-width: 860px) {
   .sticky {
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 0.75rem);
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 0;
+    padding-inline: 0;
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 0.5rem);
     background:
-      radial-gradient(ellipse 55% 48% at 50% 48%, var(--color-bg-elevated) 0%, transparent 72%),
+      radial-gradient(ellipse 55% 42% at 50% 32%, var(--color-bg-elevated) 0%, transparent 72%),
       var(--color-bg);
+  }
+
+  .portrait {
+    grid-row: 1;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .copy {
+    grid-row: 2;
+    background: linear-gradient(
+      180deg,
+      transparent 0,
+      var(--color-bg) 1.15rem
+    );
   }
 }
 

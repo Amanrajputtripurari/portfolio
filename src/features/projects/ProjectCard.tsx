@@ -2,6 +2,7 @@ import { useRef, type MouseEvent } from "react";
 import type { Project } from "@/types/portfolio";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import ProjectMock from "@/features/projects/ProjectMock";
+import ProjectLiveLink from "@/features/projects/ProjectLiveLink";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
@@ -51,7 +52,14 @@ export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
         aria-label={`Open case study: ${project.name}`}
       >
         {project.image ? (
-          <img className={styles.previewImage} src={project.image} alt="" />
+          <img
+            className={styles.previewImage}
+            src={project.image}
+            alt={project.imageAlt ?? ""}
+            width={1440}
+            height={900}
+            decoding="async"
+          />
         ) : (
           <ProjectMock project={project} />
         )}
@@ -68,23 +76,19 @@ export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
           <span className={styles.year}>{project.year}</span>
         </div>
         <p className={styles.description}>{project.description}</p>
-        <ul className={styles.tech}>
-          {project.technologies.map((tech) => (
-            <li key={tech}>{tech}</li>
-          ))}
-        </ul>
+        {project.technologies && project.technologies.length > 0 && (
+          <ul className={styles.tech}>
+            {project.technologies.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
+        )}
         <div className={styles.meta}>
           <span>{project.role}</span>
           <div className={styles.links}>
-            {project.liveUrl && (
-              <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                Live
-              </a>
-            )}
+            {project.liveUrl && <ProjectLiveLink href={project.liveUrl} />}
             {project.sourceUrl && (
-              <a href={project.sourceUrl} target="_blank" rel="noreferrer">
-                Source
-              </a>
+              <ProjectLiveLink href={project.sourceUrl} label="GitHub" />
             )}
             <button type="button" className={styles.study} onClick={handleOpen}>
               Case study

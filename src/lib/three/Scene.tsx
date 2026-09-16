@@ -8,6 +8,7 @@ import { subscribeHeroProgress } from "@/lib/heroProgress";
 import { createParticleField, type ParticleField } from "@/lib/three/particles";
 import { createDepthGrid, type DepthGrid } from "@/lib/three/grid";
 import { createOrbitalElements, type OrbitalElements } from "@/lib/three/orbitalElements";
+import { portraitRingScale, portraitWorldPoint, queryHeroPortrait } from "@/lib/three/alignToPortrait";
 import { lerp, mapRange } from "@/lib/animation";
 import styles from "./Scene.module.css";
 
@@ -51,6 +52,8 @@ export default function Scene({ onReady }: { onReady?: () => void }) {
   const { theme } = useTheme();
   const progressRef = useRef(0);
   const objectsRef = useRef<SceneObjects | null>(null);
+  const portraitRef = useRef<HTMLElement | null>(null);
+  const orbitPinned = useRef(false);
 
   useThreeRenderer(
     containerRef,
@@ -73,6 +76,7 @@ export default function Scene({ onReady }: { onReady?: () => void }) {
         opacityB: theme === "dark" ? 0.34 : 0.26,
         additive: theme === "dark",
       });
+      orbitals.group.visible = false;
       objectsRef.current = { particles, grid, orbitals };
 
       scene.add(particles.points, grid.group, orbitals.group);
@@ -83,6 +87,7 @@ export default function Scene({ onReady }: { onReady?: () => void }) {
       scene.add(ambient, key);
 
       camera.position.set(0, 0, 8);
+      portraitRef.current = queryHeroPortrait();
 
       const unsubscribe = subscribeHeroProgress((state) => {
         progressRef.current = state.progress;
@@ -90,18 +95,13 @@ export default function Scene({ onReady }: { onReady?: () => void }) {
 
       return () => {
         objectsRef.current = null;
+        orbitPinned.current = false;
         unsubscribe();
       };
     },
-    ({ camera }, elapsed) => {
+    ({ camera, renderer }, elapsed) => {
       const progress = progressRef.current;
       const objects = objectsRef.current;
-
-      if (objects) {
-        objects.particles.update(elapsed, progress);
-        objects.grid.update(progress);
-        objects.orbitals.update(elapsed, progress);
-      }
 
       const parallaxStrength = reducedMotion ? 0 : 0.35;
       const targetX = mapRange(progress, 0, 1, -0.4, 0.4) + mouse.current.x * parallaxStrength;
@@ -112,6 +112,35 @@ export default function Scene({ onReady }: { onReady?: () => void }) {
       camera.position.y = lerp(camera.position.y, targetY, 0.06);
       camera.position.z = lerp(camera.position.z, targetZ, 0.06);
       camera.lookAt(0, 0, 0);
+      camera.updateMatrixWorld();
+
+      if (objects) {
+        objects.particles.update(elapsed, progress);
+        objects.grid.update(progress);
+        objects.orbitals.update(elapsed, progress);
+
+        if (!portraitRef.current?.isConnected) {
+          portraitRef.current = queryHeroPortrait();
+        }
+        const portrait = portraitRef.current;
+        if (portrait) {
+          const point = portraitWorldPoint(camera, renderer.domElement, portrait, -0.2, 0.56);
+          const scale = portraitRingScale(camera, renderer.domElement, portrait);
+          if (point) {
+            if (!orbitPinned.current) {
+              objects.orbitals.group.position.copy(point);
+              objects.orbitals.group.scale.setScalar(scale);
+              objects.orbitals.group.visible = true;
+              orbitPinned.current = true;
+            } else {
+              objects.orbitals.group.position.lerp(point, 0.22);
+              objects.orbitals.group.scale.setScalar(
+                THREE.MathUtils.lerp(objects.orbitals.group.scale.x, scale, 0.22),
+              );
+            }
+          }
+        }
+      }
     },
     onReady,
   );
