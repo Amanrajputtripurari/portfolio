@@ -2,6 +2,10 @@
 
 Cinematic personal site built with React 19, TypeScript, Vite, GSAP, and Three.js.
 
+**Live:** https://amanrajputtripurari.github.io/portfolio/
+
+Deployed free via GitHub Pages (Actions builds `main` on every push).
+
 ## Scripts
 
 ```bash

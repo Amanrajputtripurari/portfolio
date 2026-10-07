@@ -1,4 +1,6 @@
-export const PORTRAIT_IMAGE_SRC = "/images/portrait.png";
+import { asset } from "@/lib/asset";
+
+export const PORTRAIT_IMAGE_SRC = asset("images/portrait.png");
 
 export const HERO_SCROLL_VH = 280;
 

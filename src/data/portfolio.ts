@@ -2,6 +2,7 @@
  * All portfolio content lives here. Replace placeholders with real copy
  * before shipping. UI components should not invent content beyond this file.
  */
+import { asset } from "@/lib/asset";
 import type { ExperienceItem, PersonalInfo, Project, Service, SkillItem, SocialLink } from "@/types/portfolio";
 
 export type {
@@ -130,8 +131,8 @@ export const projects: Project[] = [
     ],
     outcome:
       "Distributors pick how to run pharma distribution without stitching vendors together. Same-day logistics in four metros, or software for a nationwide field force — both ship from FastWhistle.",
-    image: "/images/projects/fastwhistle.jpg",
-    imageFull: "/images/projects/fastwhistle-full.jpg",
+    image: asset("images/projects/fastwhistle.jpg"),
+    imageFull: asset("images/projects/fastwhistle-full.jpg"),
     imageAlt: "FastWhistle landing page: Pharma Distribution, Two Ways to Run It — Logistics versus Fleet SaaS",
     liveUrl: "https://fastwhistle.com",
     embed: true,
@@ -158,8 +159,8 @@ export const projects: Project[] = [
     ],
     outcome:
       "Yaaro Fit launched on the App Store and Google Play. The marketing site at yaaro.fit carries the same story: track the work, share it with people, earn something real, then do it again.",
-    image: "/images/projects/yaaro-fit.jpg",
-    imageFull: "/images/projects/yaaro-fit-full.jpg",
+    image: asset("images/projects/yaaro-fit.jpg"),
+    imageFull: asset("images/projects/yaaro-fit-full.jpg"),
     imageAlt: "Yaaro Fit — Track. Share. Earn. Repeat. Social fitness app for runs, workouts, clubs, and rewards",
     liveUrl: "https://yaaro.fit",
     embed: true,
@@ -188,7 +189,7 @@ export const projects: Project[] = [
     ],
     outcome:
       "A public, MIT-licensed full-stack game you can clone and run. Frontend and backend share one production process (Vite + Express + Socket.IO) with PM2 notes for a single in-memory instance.",
-    image: "/images/projects/bingo.jpg",
+    image: asset("images/projects/bingo.jpg"),
     imageAlt: "BINGO on GitHub — real-time multiplayer Bingo with React and Socket.IO",
     sourceUrl: "https://github.com/Amanrajputtripurari/BINGO",
   },
