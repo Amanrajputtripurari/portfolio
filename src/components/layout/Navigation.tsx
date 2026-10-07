@@ -34,8 +34,16 @@ export default function Navigation() {
 
   function handleNavClick(event: MouseEvent<HTMLAnchorElement>, id: string) {
     event.preventDefault();
-    scrollToSection(id);
+    const wasOpen = menuOpen;
+    document.body.style.overflow = "";
     setMenuOpen(false);
+
+    // Drawer unlock needs a frame before scroll measurements are reliable.
+    if (wasOpen) {
+      window.requestAnimationFrame(() => scrollToSection(id));
+      return;
+    }
+    scrollToSection(id);
   }
 
   return (

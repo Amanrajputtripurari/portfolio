@@ -48,6 +48,8 @@ export interface Project {
   imageFull?: string;
   imageAlt?: string;
   liveUrl?: string;
+  /** Render `liveUrl` in a live iframe. Only for sites that allow framing. */
+  embed?: boolean;
   sourceUrl?: string;
 }
 
@@ -55,6 +57,7 @@ export interface Service {
   id: string;
   title: string;
   description: string;
+  deliverables: string[];
 }
 
 export interface SocialLink {

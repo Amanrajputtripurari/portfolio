@@ -97,7 +97,13 @@ export default function HeroText() {
   return (
     <div className={styles.textLayer}>
       <div ref={introRef} className={styles.chapter}>
-        <p className={styles.eyebrow}>{personal.eyebrow}</p>
+        <p className={styles.status}>
+          {personal.available && <span className={styles.liveDot} aria-hidden="true" />}
+          <span>
+            {personal.role}
+            {personal.available ? ", available for new projects" : ""}
+          </span>
+        </p>
         <h1 className={styles.headline}>
           {personal.headline.map((line) => (
             <span key={line} className={styles.headlineLine}>

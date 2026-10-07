@@ -38,6 +38,7 @@ export default function BackToTop() {
     }, []);
 
     function handleClick() {
+        document.body.style.overflow = "";
         scrollToSection("hero");
     }
 

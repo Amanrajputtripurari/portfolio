@@ -25,9 +25,10 @@
 }
 
 .brand {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   white-space: nowrap;
   color: var(--color-text);
   z-index: 1;
@@ -49,12 +50,15 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.5rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: 0.875rem;
   white-space: nowrap;
   color: var(--color-text);
-  opacity: 0.78;
+  opacity: 0.7;
   transition: opacity var(--duration-base) var(--ease-premium), color var(--duration-base) var(--ease-premium);
+}
+
+.links a:hover {
+  opacity: 1;
 }
 
 .links a[aria-current="location"] {
@@ -189,9 +193,11 @@
     display: flex;
     align-items: center;
     gap: var(--space-4);
-    min-height: 2.75rem;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
+    min-height: 3rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--color-text);
   }
 

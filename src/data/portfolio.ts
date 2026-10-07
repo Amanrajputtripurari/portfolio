@@ -41,9 +41,15 @@ export const heroChapters = {
 };
 
 export const about = {
+  lead: "I build the software behind real-world operations — riders on the road, orders in motion, people showing up for a run tomorrow.",
   paragraphs: [
     "I'm a software engineer with six years at 5Inch Ventures Pvt Ltd, where I built FastWhistle — a pharma last-mile and fleet platform used by distributors, retailers, riders, and field teams.",
     "Alongside that I freelance with Zaploom Technology: design plus frontend and backend. There I shipped Yaaro Fit, a social fitness app, and contributed across Zaploom’s client products.",
+  ],
+  now: [
+    { label: "Building", value: "FastWhistle at 5Inch Ventures" },
+    { label: "Freelancing", value: "Design and full-stack with Zaploom" },
+    { label: "Open to", value: "Product engineering and frontend systems work" },
   ],
   stats: [
     { label: "Years experience", value: "6+" },
@@ -128,6 +134,7 @@ export const projects: Project[] = [
     imageFull: "/images/projects/fastwhistle-full.jpg",
     imageAlt: "FastWhistle landing page: Pharma Distribution, Two Ways to Run It — Logistics versus Fleet SaaS",
     liveUrl: "https://fastwhistle.com",
+    embed: true,
   },
   {
     id: "yaaro-fit",
@@ -155,6 +162,7 @@ export const projects: Project[] = [
     imageFull: "/images/projects/yaaro-fit-full.jpg",
     imageAlt: "Yaaro Fit — Track. Share. Earn. Repeat. Social fitness app for runs, workouts, clubs, and rewards",
     liveUrl: "https://yaaro.fit",
+    embed: true,
   },
   {
     id: "bingo",
@@ -191,18 +199,29 @@ export const services: Service[] = [
     id: "svc-1",
     title: "Product Engineering",
     description: "End-to-end build of web products, from architecture to shipping.",
+    deliverables: ["Data model and API design", "Web app with auth and roles", "Deploy pipeline and handover"],
   },
   {
     id: "svc-2",
     title: "Frontend Systems",
     description: "Design systems and interfaces engineered for performance and scale.",
+    deliverables: ["Component library in Angular or React", "Accessible, responsive layouts", "Real-time views over WebSockets"],
   },
   {
     id: "svc-3",
     title: "Technical Consulting",
     description: "Architecture review, performance audits, and technical strategy.",
+    deliverables: ["Codebase and architecture review", "Load and runtime performance audit", "A written plan your team can act on"],
   },
 ];
+
+export const contact = {
+  headline: "Have something to build? Let’s talk.",
+  globeCaption: "Remote-first. Drag to spin.",
+  prompt: "Tell me what you’re working on — a new product, a feature that needs shipping, or a system that’s slowing down.",
+};
+
+export const builtWith = ["React", "TypeScript", "Three.js", "GSAP", "Vite"];
 
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", url: "https://github.com/Amanrajputtripurari" },

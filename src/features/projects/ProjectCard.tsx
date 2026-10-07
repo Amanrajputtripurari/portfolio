@@ -1,8 +1,9 @@
-import { useRef, type MouseEvent } from "react";
+import { useRef, type CSSProperties, type MouseEvent } from "react";
 import type { Project } from "@/types/portfolio";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import ProjectMock from "@/features/projects/ProjectMock";
 import ProjectLiveLink from "@/features/projects/ProjectLiveLink";
+import LivePreview from "@/features/projects/LivePreview";
 import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
@@ -24,6 +25,8 @@ export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
     el.style.setProperty("--tilt-x", `${y * -6}deg`);
     el.style.setProperty("--tilt-y", `${x * 8}deg`);
     el.style.setProperty("--shift-x", `${x * 10}px`);
+    el.style.setProperty("--glare-x", `${(x + 0.5) * 100}%`);
+    el.style.setProperty("--glare-y", `${(y + 0.5) * 100}%`);
   };
 
   const handleMouseLeave = () => {
@@ -45,26 +48,38 @@ export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <button
-        type="button"
-        className={styles.preview}
-        onClick={handleOpen}
-        aria-label={`Open case study: ${project.name}`}
-      >
-        {project.image ? (
-          <img
-            className={styles.previewImage}
-            src={project.image}
-            alt={project.imageAlt ?? ""}
-            width={1440}
-            height={900}
-            decoding="async"
-          />
-        ) : (
-          <ProjectMock project={project} />
-        )}
-        <span className={styles.previewHint}>View</span>
-      </button>
+      <div className={styles.stage} data-project-stage>
+        <div className={styles.preview} style={{ "--accent": project.accent } as CSSProperties}>
+          {project.embed && project.liveUrl ? (
+            <LivePreview
+              url={project.liveUrl}
+              title={project.name}
+              poster={project.image}
+              posterAlt={project.imageAlt}
+            />
+          ) : project.image ? (
+            <img
+              className={styles.previewImage}
+              src={project.image}
+              alt={project.imageAlt ?? ""}
+              width={1440}
+              height={900}
+              decoding="async"
+            />
+          ) : (
+            <ProjectMock project={project} />
+          )}
+          <span className={styles.glare} aria-hidden="true" />
+          <button
+            type="button"
+            className={styles.previewButton}
+            onClick={handleOpen}
+            aria-label={`Open case study: ${project.name}`}
+          >
+            <span className={styles.previewHint}>{project.embed ? "Open live preview" : "View case study"}</span>
+          </button>
+        </div>
+      </div>
 
       <div className={styles.info}>
         <div className={styles.infoHead}>

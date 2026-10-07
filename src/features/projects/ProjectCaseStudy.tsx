@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import type { Project } from "@/types/portfolio";
 import ProjectMock from "@/features/projects/ProjectMock";
 import ProjectLiveLink from "@/features/projects/ProjectLiveLink";
+import LivePreview from "@/features/projects/LivePreview";
 import styles from "./ProjectCaseStudy.module.css";
 
 interface ProjectCaseStudyProps {
@@ -41,17 +42,29 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
           <button type="button" className={styles.close} onClick={onClose} aria-label="Close case study">
             Close
           </button>
-          <div className={`${styles.preview} ${project.imageFull ? styles.previewShot : ""}`}>
-            {project.imageFull || project.image ? (
-              <img
-                src={project.imageFull ?? project.image}
-                alt={project.imageAlt ?? `${project.name} preview`}
-                decoding="async"
+          {project.embed && project.liveUrl ? (
+            <div className={`${styles.preview} ${styles.previewLive}`}>
+              <LivePreview
+                url={project.liveUrl}
+                title={project.name}
+                poster={project.image}
+                posterAlt={project.imageAlt}
+                interactive
               />
-            ) : (
-              <ProjectMock project={project} />
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className={`${styles.preview} ${project.imageFull ? styles.previewShot : ""}`}>
+              {project.imageFull || project.image ? (
+                <img
+                  src={project.imageFull ?? project.image}
+                  alt={project.imageAlt ?? `${project.name} preview`}
+                  decoding="async"
+                />
+              ) : (
+                <ProjectMock project={project} />
+              )}
+            </div>
+          )}
           <p className={styles.kicker}>
             Case study {project.number} — {project.year}
           </p>
